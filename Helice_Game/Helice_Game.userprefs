@@ -1,0 +1,22 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Joystick.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Helice.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Level1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Goal.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LevelManager.cs" Line="13" Column="33" />
+      <File FileName="Assets\Scripts\Mark_Level.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenuOptions.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WorldSelect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Pause_Options.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SelectHelice.cs" Line="6" Column="2" />
+      <File FileName="Assets\Scripts\SelectJoystick.cs" Line="23" Column="29" />
+      <File FileName="Assets\Scripts\Joystick.cs" Line="10" Column="35" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
