@@ -32,6 +32,9 @@ public class Level1 : MonoBehaviour {
 		case 7:
 			level8 ();
 			break;
+		case 8:
+			level9 ();
+			break;
 		}
 	}
 	
@@ -62,6 +65,9 @@ public class Level1 : MonoBehaviour {
 	}
 	void level8(){
 		Instantiate (levels[7],new Vector3(0f,0f,0f),Quaternion.identity);
+	}
+	void level9(){
+		Instantiate (levels[8],new Vector3(0f,0f,0f),Quaternion.identity);
 	}
 
 }
