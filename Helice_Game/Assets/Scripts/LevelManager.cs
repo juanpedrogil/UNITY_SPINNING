@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour {
 	public static int indexHelice=0;
 	public static Sprite joystickSprite;
 	public static int indexJoystick=0;
+	public static int sceneIndex=0;
+	public static bool changeScene=false;
 	void Awake()
 	{
 		if (levelManager == null) {

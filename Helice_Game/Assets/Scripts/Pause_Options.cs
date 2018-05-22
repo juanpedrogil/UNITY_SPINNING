@@ -8,7 +8,7 @@ public class Pause_Options : MonoBehaviour {
 	public GameObject helice;
 	// Use this for initialization
 	void Start () {
-		
+		levelFinishUI.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -16,15 +16,16 @@ public class Pause_Options : MonoBehaviour {
 		if (LevelManager.levelFinish) {
 			levelFinishUI.SetActive (true);
 			helice.SetActive (false);
-		} else {
-			levelFinishUI.SetActive(false);
-			//helice.SetActive (true);
-		}
+		} //else {
+			//levelFinishUI.SetActive(false);
+			////helice.SetActive (true);
+		//}
 	}
 	public void restart(){
 		LevelManager.levelFinish = false;
 		LevelManager.isAlive = true;
-		SceneManager.LoadScene ("GameScene");
+		//SceneManager.LoadScene ("GameScene");
+		LevelManager.changeScene=true;
 	}
 	public void next(){
 		LevelManager.levelIndex++;
@@ -33,6 +34,8 @@ public class Pause_Options : MonoBehaviour {
 	public void home(){
 		LevelManager.levelFinish = false;
 		LevelManager.isAlive = true;
-		SceneManager.LoadScene ("MainMenu");
+		//SceneManager.LoadScene ("MainMenu");
+		LevelManager.sceneIndex=0;
+		LevelManager.changeScene=true;
 	}
 }

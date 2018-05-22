@@ -15,6 +15,8 @@ public class MainMenuOptions : MonoBehaviour {
 		
 	}
 	public void start_click(){
-		SceneManager.LoadScene ("GameScene");
+		//SceneManager.LoadScene ("GameScene");
+		LevelManager.sceneIndex=1;
+		LevelManager.changeScene=true;
 	}
 }
