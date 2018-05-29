@@ -13,6 +13,6 @@ public class Shot : MonoBehaviour {
 	private void shotTheBullet(){
 		Instantiate(explosion,position,Quaternion.identity);
 		Instantiate(bullet,position,Quaternion.identity);
-		Invoke("shotTheBullet",Random.Range(1.5f,3f));
+		Invoke("shotTheBullet",Random.Range(5f,20f));
 	}
 }
