@@ -41,7 +41,9 @@ public class Bullet : MonoBehaviour {
 	void Update () {
 		
 	}
-	void OnCollisionEnter2D(Collision2D collision){
-		Destroy(this.gameObject);
+	void OnTriggerEnter2D(Collider2D collision){
+		if(collision.gameObject.tag.Equals("limit") || collision.gameObject.tag.Equals("Player")){
+			Destroy(this.gameObject);
+		}
 	}
 }
