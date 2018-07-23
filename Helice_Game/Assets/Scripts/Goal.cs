@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
-		
+		GetComponent<Transform>().tag="GOAL";//Para que no muestre la explosión al momento de cruzar la meta
 	}
 	
 	// Update is called once per frame
