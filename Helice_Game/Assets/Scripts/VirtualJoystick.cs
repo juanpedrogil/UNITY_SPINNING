@@ -32,7 +32,7 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
             Debug.Log(pos);
 
             //Move the stick image
-            joystickImage.rectTransform.anchoredPosition = new Vector3(inputVector.x*(bgImg.rectTransform.sizeDelta.x/3),inputVector.z*(bgImg.rectTransform.sizeDelta.y/3));
+            joystickImage.rectTransform.anchoredPosition = new Vector3(inputVector.x*(bgImg.rectTransform.sizeDelta.x/LevelManager.sensibility),inputVector.z*(bgImg.rectTransform.sizeDelta.y/LevelManager.sensibility));
         }
     }
     public float Horizontal()

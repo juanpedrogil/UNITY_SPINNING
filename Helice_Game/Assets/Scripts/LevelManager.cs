@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour {
 	public static int indexJoystick=0;
 	public static int sceneIndex=0;
 	public static bool changeScene=false;
+	public static float sensibility=1;
 	void Awake()
 	{
 		if (levelManager == null) {
