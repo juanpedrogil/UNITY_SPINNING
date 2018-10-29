@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System;
 
 public class LevelManager : MonoBehaviour {
 	public static int levelIndex=-1;
@@ -14,8 +17,14 @@ public class LevelManager : MonoBehaviour {
 	public static int sceneIndex=0;
 	public static bool changeScene=false;
 	public static float sensibility=1;
+
+
+	//Configuration variables	
+	
+	private string configPath;
 	void Awake()
 	{
+		configPath=Application.persistentDataPath+"/settings.conf";
 		if (levelManager == null) {
 			levelManager = this;
 			DontDestroyOnLoad (gameObject);
@@ -25,11 +34,53 @@ public class LevelManager : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		
+		loadConfig();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+	public void saveConfig(float sound,float music){
+		//Save the configuration inside of an object and then serialize in the device storage
+		BinaryFormatter bf=new BinaryFormatter();
+		FileStream file=File.Create(configPath);
+		Configuration configObject=new Configuration();
+		configObject.sensibility=sensibility;
+		configObject.levelIndex=levelIndex;
+		configObject.indexHelice=indexHelice;
+		configObject.indexJoystick=indexJoystick;
+		configObject.sound=sound;
+		configObject.music=music;
+		bf.Serialize(file,configObject);
+		file.Close();
+	}
+	void loadConfig(){
+		//Open the configuration file the read and set all settings into application
+		if(File.Exists(configPath)){
+
+			BinaryFormatter bf=new BinaryFormatter();
+			FileStream file=File.Open(configPath,FileMode.Open);
+			Configuration configObject=(Configuration)bf.Deserialize(file);
+			sensibility=configObject.sensibility;
+			levelIndex=configObject.levelIndex;
+			indexHelice=configObject.indexHelice;
+			indexJoystick=configObject.indexJoystick;
+			SensibilitySetting options=GameObject.FindObjectOfType<SensibilitySetting>();
+			options.volumenSlider.value=configObject.sound;
+			options.musicSlider.value=configObject.music;
+			file.Close();
+			Helice_Manager aux=(Helice_Manager)GameObject.FindObjectOfType<Helice_Manager>();
+			aux.setSprites(indexHelice,indexJoystick);
+		}
+	}
+}
+[Serializable]
+class Configuration{
+	public float sensibility;
+	public float sound;
+	public float music;
+	public int levelIndex;
+	public int indexHelice;
+	public int indexJoystick;
 }
