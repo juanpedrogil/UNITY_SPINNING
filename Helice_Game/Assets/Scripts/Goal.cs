@@ -18,5 +18,6 @@ public class Goal : MonoBehaviour {
 		//SceneManager.LoadScene ("GameScene");
 		LevelManager.levelFinish=true;
 		LevelManager.isAlive = false;
+		LevelManager.startTime=false;
 	}
 }

@@ -16,5 +16,9 @@ public class WorldSelect : MonoBehaviour {
 	public void turnOn(){
 		canvas.SetActive (true);
 		me.SetActive(false);
+		if(canvas.name.Equals("Main Menu")){
+			LevelManager aux=GameObject.FindObjectOfType<LevelManager>();
+			aux.saveConfig(LevelManager.sound,LevelManager.music);
+		}
 	}
 }

@@ -21,6 +21,9 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
     }
     public virtual void OnDrag(PointerEventData ped)
     {
+        if(!LevelManager.startTime){
+            LevelManager.startTime=true;
+        }
         Vector2 pos;
         if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImg.rectTransform,ped.position,ped.pressEventCamera,out pos))
         {
@@ -29,7 +32,7 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
             inputVector = new Vector3(pos.x*2+1,0,pos.y*2-1);
             inputVector = (inputVector.magnitude > 0.5f) ? inputVector.normalized : inputVector;
 
-            Debug.Log(pos);
+            //Debug.Log(pos);
 
             //Move the stick image
             joystickImage.rectTransform.anchoredPosition = new Vector3(inputVector.x*(bgImg.rectTransform.sizeDelta.x/LevelManager.sensibility),inputVector.z*(bgImg.rectTransform.sizeDelta.y/LevelManager.sensibility));

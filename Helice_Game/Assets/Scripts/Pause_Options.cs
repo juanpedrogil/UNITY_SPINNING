@@ -26,6 +26,9 @@ public class Pause_Options : MonoBehaviour {
 		LevelManager.isAlive = true;
 		//SceneManager.LoadScene ("GameScene");
 		LevelManager.changeScene=true;
+		LevelManager.startTime=false;
+		LevelTime aux=GameObject.FindObjectOfType<LevelTime>();
+		aux.reset();
 	}
 	public void next(){
 		LevelManager.levelIndex++;

@@ -15,8 +15,12 @@ public class LevelManager : MonoBehaviour {
 	public static Sprite joystickSprite;
 	public static int indexJoystick=0;
 	public static int sceneIndex=0;
+	public static int levelTime=0;
 	public static bool changeScene=false;
 	public static float sensibility=1;
+	public static bool startTime=false;
+	private GameObject heliceEX;
+	public static float sound,music;
 
 
 	//Configuration variables	
@@ -54,6 +58,10 @@ public class LevelManager : MonoBehaviour {
 		configObject.music=music;
 		bf.Serialize(file,configObject);
 		file.Close();
+		Helice_Manager options=GameObject.FindObjectOfType<Helice_Manager>();
+		options.volumenSlider.value=configObject.sound;
+		options.musicSlider.value=configObject.music;
+		options.setSprites(indexHelice,indexJoystick);
 	}
 	void loadConfig(){
 		//Open the configuration file the read and set all settings into application
@@ -66,13 +74,18 @@ public class LevelManager : MonoBehaviour {
 			levelIndex=configObject.levelIndex;
 			indexHelice=configObject.indexHelice;
 			indexJoystick=configObject.indexJoystick;
-			SensibilitySetting options=GameObject.FindObjectOfType<SensibilitySetting>();
+			Helice_Manager options=GameObject.FindObjectOfType<Helice_Manager>();
 			options.volumenSlider.value=configObject.sound;
 			options.musicSlider.value=configObject.music;
+			options.setSprites(indexHelice,indexJoystick);
 			file.Close();
-			Helice_Manager aux=(Helice_Manager)GameObject.FindObjectOfType<Helice_Manager>();
-			aux.setSprites(indexHelice,indexJoystick);
 		}
+	}
+	void changeHeliceSprite(){
+		if(heliceEX==null){
+			heliceEX=GameObject.Find("HeliceEX");
+		}
+		heliceEX.GetComponent<SpriteRenderer>().sprite=heliceSprite;
 	}
 }
 [Serializable]
