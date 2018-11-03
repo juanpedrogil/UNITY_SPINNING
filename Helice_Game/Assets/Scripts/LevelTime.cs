@@ -8,13 +8,17 @@ public class LevelTime : MonoBehaviour {
 	int timeSeconds;
 	// Use this for initialization
 	void Start () {
-		timeSeconds=LevelManager.levelTime;
+		timeSeconds=120;
 		time=(Text)gameObject.GetComponent("Text");
 		time.text=timeSeconds+"";
 		Invoke("runningOut",1f);
 	}
 	void runningOut(){
 		//Make the time running out
+		Debug.Log(LevelManager.startTime);
+		if(LevelManager.startTime && time.text.Equals("0") && LevelManager.isAlive){
+			GameObject.FindObjectOfType<Helice>().die();
+		}
 		if(LevelManager.startTime && !time.text.Equals("0")){
 			time.text=int.Parse(time.text)-1+"";
 		}
@@ -22,9 +26,6 @@ public class LevelTime : MonoBehaviour {
 			time.color=Color.red;
 		}else{
 			time.color=Color.white;
-		}
-		if(LevelManager.startTime && time.text.Equals("0") && LevelManager.isAlive){
-			GameObject.FindObjectOfType<Helice>().die();
 		}
 		Invoke("runningOut",1f);
 	}

@@ -21,7 +21,7 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
     }
     public virtual void OnDrag(PointerEventData ped)
     {
-        if(!LevelManager.startTime){
+        if(!LevelManager.startTime && LevelManager.isAlive){
             LevelManager.startTime=true;
         }
         Vector2 pos;

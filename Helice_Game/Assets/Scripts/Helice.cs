@@ -38,12 +38,14 @@ public class Helice : MonoBehaviour {
 		shake=true;
 		helice.SetActive (false);
 		LevelManager.isAlive = false;
+		LevelManager.startTime=false;
 		Vector3 position = helice.GetComponent<Transform>().position;
 		Instantiate (explosion,new Vector3(position.x,position.y,-2.2f),Quaternion.identity);
 		Invoke ("reCreate",2f);
 	}
 	void OnTriggerEnter2D(Collider2D collision){
 		if(collision.transform.gameObject.tag!="GOAL"){
+			LevelManager.startTime=false;
 			die();
 		}
 	}
@@ -59,7 +61,6 @@ public class Helice : MonoBehaviour {
 		Destroy (GameObject.FindGameObjectWithTag ("explosion"));
 		helice.SetActive (true);
 		player.GetComponent<Transform>().position = new Vector3 (0f,0f,90f);
-		LevelManager.startTime=false;
 		LevelTime aux=GameObject.FindObjectOfType<LevelTime>();
 		aux.reset();
 	}

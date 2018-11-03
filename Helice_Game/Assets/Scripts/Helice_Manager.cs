@@ -9,7 +9,7 @@ public class Helice_Manager : MonoBehaviour {
 	public Slider volumenSlider,musicSlider;
 	// Use this for initialization
 	void Start () {
-		
+		putSprite(LevelManager.indexHelice);
 	}
 	
 	// Update is called once per frame
@@ -19,6 +19,11 @@ public class Helice_Manager : MonoBehaviour {
 	public void setSprites(int indexHelice,int indexJoystick){
 		LevelManager.heliceSprite=helices[indexHelice];
 		LevelManager.joystickSprite=joysticks[indexJoystick];
-		this.GetComponent<SpriteRenderer>().sprite=helices[indexHelice];
+		putSprite(indexHelice);
+	}
+	public void putSprite(int indexHelice){
+		if(this.GetComponent<SpriteRenderer>()!=null){
+			this.GetComponent<SpriteRenderer>().sprite=helices[indexHelice];
+		}
 	}
 }

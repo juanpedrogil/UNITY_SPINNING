@@ -18,5 +18,7 @@ public class MainMenuOptions : MonoBehaviour {
 		//SceneManager.LoadScene ("GameScene");
 		LevelManager.sceneIndex=1;
 		LevelManager.changeScene=true;
+		LevelManager aux=GameObject.FindObjectOfType<LevelManager>();
+		aux.saveConfig(LevelManager.sound,LevelManager.music);
 	}
 }
