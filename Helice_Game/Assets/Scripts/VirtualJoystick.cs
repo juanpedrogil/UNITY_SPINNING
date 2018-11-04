@@ -8,6 +8,7 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
     private Image bgImg;
     private Image joystickImage;
     private Vector3 inputVector;
+    public float norma=0.5f;
 
 
     public virtual void OnPointerDown(PointerEventData ped)
@@ -30,12 +31,12 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
             pos.x = (pos.x / bgImg.rectTransform.sizeDelta.x);
             pos.y = (pos.y / bgImg.rectTransform.sizeDelta.y);
             inputVector = new Vector3(pos.x*2+1,0,pos.y*2-1);
-            inputVector = (inputVector.magnitude > 0.5f) ? inputVector.normalized : inputVector;
+            inputVector = (inputVector.magnitude > LevelManager.sensibility) ? inputVector.normalized : inputVector;
 
             //Debug.Log(pos);
 
             //Move the stick image
-            joystickImage.rectTransform.anchoredPosition = new Vector3(inputVector.x*(bgImg.rectTransform.sizeDelta.x/LevelManager.sensibility),inputVector.z*(bgImg.rectTransform.sizeDelta.y/LevelManager.sensibility));
+            joystickImage.rectTransform.anchoredPosition = new Vector3(inputVector.x*(bgImg.rectTransform.sizeDelta.x/3),inputVector.z*(bgImg.rectTransform.sizeDelta.y/3));
         }
     }
     public float Horizontal()

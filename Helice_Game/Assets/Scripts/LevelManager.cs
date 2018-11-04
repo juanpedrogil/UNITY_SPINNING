@@ -6,7 +6,7 @@ using System.IO;
 using System;
 
 public class LevelManager : MonoBehaviour {
-	public static int hearts=1;
+	public static int hearts=20;
 	public static bool mainScene=true;
 	public static int levelIndex=-1;
 	public static bool isAlive=true;
