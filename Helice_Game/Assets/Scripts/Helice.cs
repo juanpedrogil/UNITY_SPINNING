@@ -36,24 +36,21 @@ public class Helice : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D collision){
 		shake=true;
-		helice.SetActive (false);
-		LevelManager.isAlive = false;
-		LevelManager.startTime=false;
-		Vector3 position = helice.GetComponent<Transform>().position;
-		Instantiate (explosion,new Vector3(position.x,position.y,-2.2f),Quaternion.identity);
-		Invoke ("reCreate",2f);
+		die();
 	}
 	void OnTriggerEnter2D(Collider2D collision){
 		if(collision.transform.gameObject.tag!="GOAL"){
-			LevelManager.startTime=false;
 			die();
 		}
 	}
 	public void die(){
 		helice.SetActive (false);
 		LevelManager.isAlive = false;
+		LevelManager.startTime=false;
 		Vector3 position = helice.GetComponent<Transform>().position;
 		Instantiate (explosion,new Vector3(position.x,position.y,-2.2f),Quaternion.identity);
+		LevelManager.hearts--;
+		GameObject.FindObjectOfType<Hearts>().refreshHearts();
 		Invoke ("reCreate",2f);
 	}
 	void reCreate(){
